@@ -527,16 +527,23 @@ void Mader::updateState(mt::state data)
 {
   state_ = data;
 
-  if (state_initialized_ == false)
+  if (!state_initialized_)
   {
     mt::state tmp;
     tmp.pos = data.pos;
     tmp.yaw = data.yaw;
-    plan_.push_back(tmp);
+    plan_.erase(plan_.begin(), plan_.end());
+    plan_.push_back(tmp); // plan_ should be empty
+    std::cout << "in updateState function ";
+    plan_.print();
     previous_yaw_ = tmp.yaw;
   }
 
-  state_initialized_ = true;
+  if (drone_status_ == DroneStatus::YAWING)
+  {
+    state_initialized_ = true;
+  }
+  
 }
 
 bool Mader::initializedAllExceptPlanner()
