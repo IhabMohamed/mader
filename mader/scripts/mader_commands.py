@@ -35,7 +35,7 @@ class Mader_Commands:
 
         # self.alt_taken_off = 2.5; #Altitude when hovering after taking off
         #self.alt_ground = 0.85; #for a bigger table (HX18 and HX19) #Altitude of the ground
-        self.alt_ground = 0.77; #for a smaller table (ohter hexes) #Altitude of the ground
+        self.alt_ground = 1.0; #for a smaller table (ohter hexes) #Altitude of the ground
         self.initialized=False;
 
     #In rospy, the callbacks are all of them in separate threads
